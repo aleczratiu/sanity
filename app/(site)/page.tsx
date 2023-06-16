@@ -8,7 +8,7 @@ export default async function Home() {
     <div>
       Available landing pages:
       <ul>
-        {pages.map((page, index) => (
+        {pages.map((page: any, index: number) => (
           <li key={index}>
             <Link href={page.slug}>{page.title}</Link>
           </li>

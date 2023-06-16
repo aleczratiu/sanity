@@ -37,7 +37,7 @@ export default {
           name: 'link',
           type: 'url',
           title: 'Button Link',
-          validation: (Rule) =>
+          validation: (Rule: any) =>
             Rule.uri({
               scheme: ['http', 'https', 'mailto', 'tel'],
             }),
@@ -58,7 +58,7 @@ export default {
           name: 'link',
           type: 'url',
           title: 'Button Link',
-          validation: (Rule) =>
+          validation: (Rule: any) =>
             Rule.uri({
               scheme: ['http', 'https', 'mailto', 'tel'],
             }),

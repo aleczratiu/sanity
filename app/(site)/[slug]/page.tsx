@@ -4,7 +4,7 @@ import TestimonialSection from '../../modules/TestimonialSection';
 import GallerySection from '../../modules/GallerySection';
 import TextWithIllustrationSection from '../../modules/TextWithIllustrationSection';
 
-export default async function Page({ params }) {
+export default async function Page({ params }: { params: any }) {
   const result = await sanityClient.fetch(
     `*[_type=="landingPage" && slug.current == $slug][0] { "pageBuilder": pageBuilder[] { ... } }`,
     { slug: params.slug },
@@ -12,7 +12,7 @@ export default async function Page({ params }) {
 
   return (
     <div className='flex justify-center flex-col' style={{ backgroundColor: '#fff' }}>
-      {result.pageBuilder?.map((el, id) => {
+      {result.pageBuilder?.map((el: any, id: number) => {
         if (el._type === 'hero') {
           return <HeroSection el={el} id={id} key={id} />;
         }
