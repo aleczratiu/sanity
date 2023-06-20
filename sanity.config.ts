@@ -7,6 +7,7 @@ import gallery from './sanity/schemas/gallery';
 import form from './sanity/schemas/form';
 import video from './sanity/schemas/video';
 import testimonial from './sanity/schemas/testimonial';
+import { defaultDocumentNode } from './sanity/defaultDocumentNode';
 
 export default defineConfig({
   name: 'default',
@@ -16,7 +17,7 @@ export default defineConfig({
   projectId: 'oo2wh185',
   dataset: 'production',
 
-  plugins: [deskTool()],
+  plugins: [deskTool({ defaultDocumentNode })],
 
   schema: {
     types: [
