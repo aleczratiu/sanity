@@ -8,6 +8,8 @@ import form from './sanity/schemas/form';
 import video from './sanity/schemas/video';
 import testimonial from './sanity/schemas/testimonial';
 import { defaultDocumentNode } from './sanity/defaultDocumentNode';
+import { documentInternationalization } from '@sanity/document-internationalization';
+import { localeString } from './sanity/schemas/localeStringType';
 
 export default defineConfig({
   name: 'default',
@@ -17,7 +19,17 @@ export default defineConfig({
   projectId: 'oo2wh185',
   dataset: 'production',
 
-  plugins: [deskTool({ defaultDocumentNode })],
+  plugins: [
+    deskTool({ defaultDocumentNode }),
+    documentInternationalization({
+      // Required configuration
+      supportedLanguages: [
+        { id: 'es', title: 'Spanish' },
+        { id: 'en', title: 'English' },
+      ],
+      schemaTypes: ['landingPage'],
+    }),
+  ],
 
   schema: {
     types: [
@@ -62,6 +74,8 @@ export default defineConfig({
       form,
       video,
       testimonial,
+      { name: 'language', type: 'string', title: 'language', readOnly: true, hidden: true },
+      localeString,
     ],
   },
   document: {

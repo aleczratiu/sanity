@@ -3,7 +3,7 @@ import { urlFor } from '@/sanity/utils/urlFor';
 
 export default function HeroSection({ el, id }: { el: any; id: number }) {
   const {
-    heading,
+    title,
     description,
     image,
     primary_button,
@@ -28,7 +28,7 @@ export default function HeroSection({ el, id }: { el: any; id: number }) {
         <div>
           <div className='mb-12'>
             <div className='text-xl mb-12'>{unicase}</div>
-            <h1 className='text-4xl mb-12'>{heading}</h1>
+            <h1 className='text-4xl mb-12'>{title || title?.en}</h1>
             <p className='text-lg mb-12'>{description}</p>
           </div>
           <div className='flex justify-between mb-12'>

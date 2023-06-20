@@ -1,3 +1,4 @@
+import { defineField } from 'sanity';
 import theme from './theme';
 import video from './video';
 
@@ -8,11 +9,11 @@ export default {
   title: 'Hero',
   fields: [
     theme,
-    {
-      name: 'heading',
-      type: 'string',
+    defineField({
       title: 'Title',
-    },
+      name: 'title',
+      type: 'localeString',
+    }),
     {
       name: 'description',
       type: 'text',
