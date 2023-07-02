@@ -5,15 +5,16 @@ import video from './video';
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   name: 'hero',
-  type: 'object',
+  type: 'document',
   title: 'Hero',
+  hidden: true,
   fields: [
     theme,
-    defineField({
+    {
       title: 'Title',
       name: 'title',
       type: 'localeString',
-    }),
+    },
     {
       name: 'description',
       type: 'text',

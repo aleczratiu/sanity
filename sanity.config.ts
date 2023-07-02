@@ -1,4 +1,4 @@
-import { defineConfig } from 'sanity';
+import { defineConfig, definePlugin } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import hero from './sanity/schemas/hero';
 import textWithIllustration from './sanity/schemas/textWithIllustration';
@@ -8,8 +8,10 @@ import form from './sanity/schemas/form';
 import video from './sanity/schemas/video';
 import testimonial from './sanity/schemas/testimonial';
 import { defaultDocumentNode } from './sanity/defaultDocumentNode';
+import controlSidebar from './sanity/controlSidebar';
 import { documentInternationalization } from '@sanity/document-internationalization';
 import { localeString } from './sanity/schemas/localeStringType';
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy';
 
 export default defineConfig({
   name: 'default',
@@ -20,7 +22,7 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [
-    deskTool({ defaultDocumentNode }),
+    deskTool({ defaultDocumentNode, structure: controlSidebar }),
     documentInternationalization({
       // Required configuration
       supportedLanguages: [
@@ -29,6 +31,7 @@ export default defineConfig({
       ],
       schemaTypes: ['landingPage'],
     }),
+    vercelDeployTool(),
   ],
 
   schema: {
@@ -56,13 +59,38 @@ export default defineConfig({
             type: 'array',
             title: 'Page builder',
             of: [
-              { type: 'hero' },
               { type: 'textWithIllustration' },
               { type: 'callToAction' },
               { type: 'gallery' },
               { type: 'form' },
               { type: 'video' },
               { type: 'testimonial' },
+              { type: 'hero' },
+              { type: 'components' },
+            ],
+          },
+        ],
+      },
+      {
+        name: 'components',
+        title: 'Components',
+        type: 'document',
+        fields: [
+          {
+            type: 'string',
+            name: 'title',
+            title: 'Title',
+          },
+          {
+            name: 'pageContent',
+            title: 'Page Content',
+            type: 'array',
+            of: [
+              {
+                type: 'reference',
+                title: 'My Object Field',
+                to: [{ type: 'hero' }, { type: 'callToAction' }],
+              },
             ],
           },
         ],

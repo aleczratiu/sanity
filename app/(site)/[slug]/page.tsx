@@ -3,6 +3,7 @@ import HeroSection from '../../modules/HeroSection';
 import TestimonialSection from '../../modules/TestimonialSection';
 import GallerySection from '../../modules/GallerySection';
 import TextWithIllustrationSection from '../../modules/TextWithIllustrationSection';
+import CallToAction from '../../modules/CallToAction';
 
 export default async function Page({ params }: { params: any }) {
   const result = await sanityClient.fetch(
@@ -24,6 +25,9 @@ export default async function Page({ params }: { params: any }) {
         }
         if (el._type === 'textWithIllustration') {
           return <TextWithIllustrationSection el={el} id={id} key={id} />;
+        }
+        if (el._type === 'callToAction') {
+          return <CallToAction el={el} id={id} key={id} />;
         }
         return null;
       })}

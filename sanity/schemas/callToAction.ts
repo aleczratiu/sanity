@@ -1,17 +1,37 @@
 export default {
   name: 'callToAction',
-  type: 'object',
+  type: 'document',
   title: 'Call to Action',
   fields: [
     {
-      name: 'linkText',
+      name: 'title',
       type: 'string',
-      title: 'Link Text',
+      title: 'Title',
     },
     {
-      name: 'url',
-      type: 'url',
-      title: 'URL',
+      name: 'subtitle',
+      type: 'string',
+      title: 'Subtitle',
+    },
+    {
+      name: 'button1',
+      type: 'string',
+      title: 'Button 1',
+    },
+    {
+      name: 'link1',
+      type: 'string',
+      title: 'Button link 1',
+    },
+    {
+      name: 'button2',
+      type: 'string',
+      title: 'Button 2',
+    },
+    {
+      name: 'link2',
+      type: 'string',
+      title: 'Button link 2',
     },
   ],
-}
+};
